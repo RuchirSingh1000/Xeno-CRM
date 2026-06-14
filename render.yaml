@@ -47,6 +47,11 @@ services:
       # if you want persistence across redeploys.
       - key: DATABASE_URL
         value: sqlite:///./crm.db
+      # Seed CSV directory — absolute path on Render's filesystem.
+      # The default "../../data" is relative and resolves wrong on Render's
+      # cloned repo layout (lands above repo root); pinning explicitly here.
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
 
   - type: web
     name: xeno-channel-simulator
