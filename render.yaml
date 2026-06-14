@@ -38,7 +38,7 @@ services:
       # https://<service-name>.onrender.com. If you renamed the simulator
       # service, update this value in the dashboard after first deploy.
       - key: CHANNEL_SERVICE_URL
-        value: https://xeno-channel-simulator.onrender.com
+        value: https://xeno-channel-simulator-5cgi.onrender.com
       # CORS — Vercel preview URLs and the production URL. Update the
       # production value after deploying the frontend.
       - key: ALLOWED_ORIGINS
