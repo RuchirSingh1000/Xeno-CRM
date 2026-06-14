@@ -14,6 +14,13 @@ async def _on_startup() -> None:
     # the simulator's read timeout.
     anyio.to_thread.current_default_thread_limiter().total_tokens = 200
 
+    # Auto-create schema on boot. Idempotent — if tables already exist,
+    # this is a no-op. Necessary on Render's ephemeral free-tier disk,
+    # which starts every deploy with an empty SQLite file.
+    from app.db.session import Base, engine
+    from app import models  # noqa: F401 — ensure all model classes are registered
+    Base.metadata.create_all(bind=engine)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.origins_list,
