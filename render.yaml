@@ -16,6 +16,9 @@ services:
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
+      # Pin Python — Render defaults to 3.14 which has no pydantic-core wheel yet.
+      - key: PYTHON_VERSION
+        value: 3.12.7
       # SECRETS — set these in the Render dashboard after first deploy.
       # Leaving sync=false means Render will prompt for the value rather than
       # storing the placeholder.
@@ -54,6 +57,8 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
       - key: WEBHOOK_HMAC_SECRET
         fromService:
           type: web
