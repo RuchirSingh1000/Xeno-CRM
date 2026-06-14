@@ -42,7 +42,7 @@ services:
       # CORS — Vercel preview URLs and the production URL. Update the
       # production value after deploying the frontend.
       - key: ALLOWED_ORIGINS
-        value: http://localhost:3000,https://xeno-crm.vercel.app
+        value: http://localhost:3000,https://xeno-crm-flame-nu.vercel.app
       # SQLite default is fine for the demo. Swap to a Postgres URL here
       # if you want persistence across redeploys.
       - key: DATABASE_URL
