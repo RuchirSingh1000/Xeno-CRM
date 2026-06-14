@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
@@ -25,12 +25,18 @@ import { useToast } from "@/components/Toast";
 import { AILoader, AILoaderBlock } from "@/components/AILoader";
 import { useAIThinking } from "@/components/AIThinking";
 
-// Force dynamic rendering — this page uses useSearchParams which Next 16
-// won't statically prerender. Every render of this page hits the backend
-// anyway, so prerendering buys nothing.
-export const dynamic = "force-dynamic";
-
+// Next 16 requires components that call useSearchParams to be wrapped in
+// <Suspense> so the static prerender can bail out gracefully. The outer
+// default export does that; the real page body is rendered inside.
 export default function CampaignsPage() {
+  return (
+    <Suspense fallback={null}>
+      <CampaignsPageInner />
+    </Suspense>
+  );
+}
+
+function CampaignsPageInner() {
   const searchParams = useSearchParams();
   const initialSegmentId = searchParams.get("segment_id");
 
