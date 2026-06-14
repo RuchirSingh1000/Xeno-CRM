@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
@@ -680,7 +681,7 @@ function SavedSegmentCard({
   if (ac.loyalty_tiers && ac.loyalty_tiers.length > 0) chips.push(`Tiers: ${ac.loyalty_tiers.join(",")}`);
   if (ac.min_source_coverage) chips.push(`${ac.min_source_coverage}+ sources`);
   if (sr.require_channel_consent) {
-    const labels: Record<string, JSX.Element> = {
+    const labels: Record<string, React.ReactNode> = {
       whatsapp: <ChannelBadge channel="whatsapp" />,
       sms: <ChannelBadge channel="sms" />,
       email: <ChannelBadge channel="email" />,
