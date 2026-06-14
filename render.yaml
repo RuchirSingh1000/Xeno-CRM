@@ -67,6 +67,6 @@ services:
       # Where to POST webhook callbacks. Render service URLs are predictable:
       # https://<service-name>.onrender.com. Update if you renamed the API.
       - key: CRM_WEBHOOK_URL
-        value: https://xeno-crm-api.onrender.com/webhooks/channel-events
+        value: https://xeno-crm-api-b72n.onrender.com/webhooks/channel-events
       - key: DEMO_TIMESCALE
         value: "0.05"
