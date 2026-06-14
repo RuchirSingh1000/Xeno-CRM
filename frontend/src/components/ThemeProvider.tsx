@@ -35,15 +35,13 @@ const STORAGE_KEY = "xeno_theme";
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
 
-  // On mount: read persisted choice, fall back to OS preference, default light
+  // On mount: read persisted choice, default light. We intentionally do NOT
+  // honour OS prefers-color-scheme — for a demo, every first-time visitor
+  // should see the brand's primary palette (light) regardless of how their
+  // OS is themed. Returning visitors who actively toggled keep their choice.
   useEffect(() => {
     const stored = (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) as Theme | null;
-    let initial: Theme = "light";
-    if (stored === "light" || stored === "dark") {
-      initial = stored;
-    } else if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      initial = "dark";
-    }
+    const initial: Theme = stored === "light" || stored === "dark" ? stored : "light";
     applyTheme(initial, /* withTransition */ false);
     setThemeState(initial);
   }, []);

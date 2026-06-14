@@ -39,7 +39,8 @@ const themeInit = `
 (function() {
   try {
     var t = localStorage.getItem('xeno_theme');
-    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // Default to light for first-time visitors. OS preference is ignored
+    // so the demo lands on the brand's primary palette every time.
     if (t === 'dark') document.documentElement.classList.add('dark');
   } catch (e) {}
 })();
