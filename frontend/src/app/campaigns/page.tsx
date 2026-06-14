@@ -25,6 +25,11 @@ import { useToast } from "@/components/Toast";
 import { AILoader, AILoaderBlock } from "@/components/AILoader";
 import { useAIThinking } from "@/components/AIThinking";
 
+// Force dynamic rendering — this page uses useSearchParams which Next 16
+// won't statically prerender. Every render of this page hits the backend
+// anyway, so prerendering buys nothing.
+export const dynamic = "force-dynamic";
+
 export default function CampaignsPage() {
   const searchParams = useSearchParams();
   const initialSegmentId = searchParams.get("segment_id");
