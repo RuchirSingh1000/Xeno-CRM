@@ -1,0 +1,128 @@
+{
+  "passing": 15,
+  "total": 15,
+  "pct": 100.0,
+  "elapsed_seconds": 89.34,
+  "results": [
+    {
+      "id": "lapsed_high_value_basic",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 3600,
+      "failures": []
+    },
+    {
+      "id": "vip_gold_platinum",
+      "passed": true,
+      "validation_status": "ok",
+      "provider": "gemini",
+      "latency_ms": 6730,
+      "failures": []
+    },
+    {
+      "id": "first_time_buyers",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1399,
+      "failures": []
+    },
+    {
+      "id": "whatsapp_preferred",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1090,
+      "failures": []
+    },
+    {
+      "id": "active_recent",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1376,
+      "failures": []
+    },
+    {
+      "id": "explicit_no_discount",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1031,
+      "failures": []
+    },
+    {
+      "id": "premium_upsell",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1334,
+      "failures": []
+    },
+    {
+      "id": "whales_only",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1331,
+      "failures": []
+    },
+    {
+      "id": "tier_silver_focus",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1440,
+      "failures": []
+    },
+    {
+      "id": "multi_source_known",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1117,
+      "failures": []
+    },
+    {
+      "id": "explicit_dnd_compliance",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1450,
+      "failures": []
+    },
+    {
+      "id": "email_only_long_form",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1149,
+      "failures": []
+    },
+    {
+      "id": "frequency_loyal_repeat",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1321,
+      "failures": []
+    },
+    {
+      "id": "name_personalization_required",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 926,
+      "failures": []
+    },
+    {
+      "id": "city_not_in_list_should_be_omitted",
+      "passed": true,
+      "validation_status": "fallback_used",
+      "provider": "gemini",
+      "latency_ms": 1030,
+      "failures": []
+    }
+  ]
+}

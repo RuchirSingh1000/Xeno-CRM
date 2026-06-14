@@ -1,0 +1,31 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite
+*.sqlite3
+
+# Env
+.env
+.env.local
+!.env.example
+!.env.local.example
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Frontend dev artifacts
+frontend/dev.log
+frontend/dev.err.log

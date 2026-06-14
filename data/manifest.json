@@ -1,0 +1,98 @@
+{
+  "brand": {
+    "name": "Brewhouse Co.",
+    "industry": "Coffee & QSR (D2C)",
+    "country": "India",
+    "description": "A mid-size Indian D2C coffee chain operating 25 retail locations across Bengaluru, Mumbai, Delhi, Pune, Hyderabad, and Chennai, plus a Shopify storefront and a loyalty program. Three separate systems, three separate teams, three separate views of the same customer."
+  },
+  "underlying_customers": 1500,
+  "overlap": {
+    "in_one_source_only": 450,
+    "in_two_sources": 637,
+    "in_all_three_sources": 413
+  },
+  "sources": [
+    {
+      "key": "pos",
+      "label": "POS export",
+      "system": "Retail point-of-sale",
+      "filename": "brewhouse_pos_export.csv",
+      "row_count": 1002,
+      "primary_identifier": "phone (+91 format)",
+      "fields": [
+        "customer_mobile",
+        "customer_name",
+        "store_id",
+        "store_visits",
+        "last_visit_date",
+        "last_bill_amount",
+        "city"
+      ],
+      "quirks": [
+        "Phone in +91-XXXXX-XXXXX or +91 XXXXX XXXXX format",
+        "Names are inconsistent: full, initialled, or lowercase",
+        "No email captured"
+      ]
+    },
+    {
+      "key": "ecommerce",
+      "label": "Shopify export",
+      "system": "Ecommerce storefront",
+      "filename": "brewhouse_shopify_export.csv",
+      "row_count": 988,
+      "primary_identifier": "email",
+      "fields": [
+        "email",
+        "full_name",
+        "total_orders",
+        "total_spent_inr",
+        "signup_date",
+        "city",
+        "accepts_marketing"
+      ],
+      "quirks": [
+        "Email-first, no phone",
+        "~8% of duplicate emails have single-character typos",
+        "Marketing consent only at coarse yes/no level"
+      ]
+    },
+    {
+      "key": "loyalty",
+      "label": "Loyalty program export",
+      "system": "Loyalty CRM",
+      "filename": "brewhouse_loyalty_export.csv",
+      "row_count": 973,
+      "primary_identifier": "member_id + phone (10-digit) + email",
+      "fields": [
+        "member_id",
+        "member_name",
+        "phone",
+        "email_id",
+        "tier",
+        "points_balance",
+        "dob",
+        "joined_on"
+      ],
+      "quirks": [
+        "Phone is 10-digit only (no country code)",
+        "Tier and points enable VIP segmentation",
+        "DOB enables birthday campaigns"
+      ]
+    }
+  ],
+  "orders": {
+    "filename": "brewhouse_orders.csv",
+    "row_count": 5000,
+    "window_days": 540,
+    "categories": [
+      "Espresso",
+      "Cold Brew",
+      "Cappuccino",
+      "Pastry",
+      "Sandwich",
+      "Coffee Beans 250g",
+      "Merchandise",
+      "Bulk Order"
+    ]
+  }
+}

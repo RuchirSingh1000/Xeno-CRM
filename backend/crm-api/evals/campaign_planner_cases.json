@@ -1,0 +1,122 @@
+[
+  {
+    "id": "lapsed_high_value_basic",
+    "input_goal": "win back high-paying customers who haven't ordered in 30 days",
+    "expected": {
+      "audience_criteria_has": {"last_order_days_min_at_least": 14, "ltv_min_at_least": 1000},
+      "suppression_rules": {"exclude_dnd": true},
+      "channel_priority_contains": ["whatsapp", "sms"],
+      "template_has_variables": ["first_name"],
+      "template_min_length": 30
+    }
+  },
+  {
+    "id": "vip_gold_platinum",
+    "input_goal": "VIP gold and platinum members across all cities",
+    "expected": {
+      "audience_criteria_has": {"loyalty_tiers_subset_of": ["gold", "platinum"]},
+      "channel_priority_min_length": 2,
+      "template_has_variables": ["first_name", "loyalty_tier"]
+    }
+  },
+  {
+    "id": "first_time_buyers",
+    "input_goal": "celebrate first-time buyers in their first month",
+    "expected": {
+      "audience_criteria_has": {"total_orders_min_eq": 1, "total_orders_max_eq": 1},
+      "channel_priority_contains": ["whatsapp"],
+      "template_has_variables": ["first_name"]
+    }
+  },
+  {
+    "id": "whatsapp_preferred",
+    "input_goal": "lapsed shoppers in Bengaluru, prefer WhatsApp",
+    "expected": {
+      "audience_criteria_has": {"cities_contains": "Bengaluru", "last_order_days_min_at_least": 14},
+      "channel_priority_starts_with": "whatsapp"
+    }
+  },
+  {
+    "id": "active_recent",
+    "input_goal": "customers active in the last 14 days with 3+ orders",
+    "expected": {
+      "audience_criteria_has": {"last_order_days_max_at_most": 30, "total_orders_min_at_least": 2},
+      "suppression_rules": {"exclude_dnd": true}
+    }
+  },
+  {
+    "id": "explicit_no_discount",
+    "input_goal": "re-engage gold members across all cities, no discount",
+    "expected": {
+      "audience_criteria_has": {"loyalty_tiers_subset_of": ["gold", "platinum"]},
+      "template_must_not_contain_any": ["%", "discount", "off"]
+    }
+  },
+  {
+    "id": "premium_upsell",
+    "input_goal": "active customers in last 14 days, upsell premium coffee beans",
+    "expected": {
+      "audience_criteria_has": {"last_order_days_max_at_most": 30},
+      "channel_priority_min_length": 1,
+      "template_has_variables": ["first_name"]
+    }
+  },
+  {
+    "id": "whales_only",
+    "input_goal": "top spenders, our whales, with LTV over 15000",
+    "expected": {
+      "audience_criteria_has": {"ltv_min_at_least": 10000}
+    }
+  },
+  {
+    "id": "tier_silver_focus",
+    "input_goal": "silver tier loyalty members in Mumbai",
+    "expected": {
+      "audience_criteria_has": {"loyalty_tiers_subset_of": ["silver", "gold", "platinum", "bronze"], "cities_contains": "Mumbai"}
+    }
+  },
+  {
+    "id": "multi_source_known",
+    "input_goal": "customers known across all three of our systems",
+    "expected": {
+      "audience_criteria_has": {"min_source_coverage_eq": 3}
+    }
+  },
+  {
+    "id": "explicit_dnd_compliance",
+    "input_goal": "outreach to all reachable customers in Delhi",
+    "expected": {
+      "audience_criteria_has": {"cities_contains": "Delhi"},
+      "suppression_rules": {"exclude_dnd": true}
+    }
+  },
+  {
+    "id": "email_only_long_form",
+    "input_goal": "send a long-form email to lapsed customers with our story",
+    "expected": {
+      "audience_criteria_has": {"last_order_days_min_at_least": 14},
+      "channel_priority_starts_with": "email"
+    }
+  },
+  {
+    "id": "frequency_loyal_repeat",
+    "input_goal": "loyal repeat customers we should thank",
+    "expected": {
+      "audience_criteria_has": {"total_orders_min_at_least": 3}
+    }
+  },
+  {
+    "id": "name_personalization_required",
+    "input_goal": "any campaign that re-engages dormant customers",
+    "expected": {
+      "template_has_variables": ["first_name"]
+    }
+  },
+  {
+    "id": "city_not_in_list_should_be_omitted",
+    "input_goal": "customers in Goa who lapsed 60+ days ago",
+    "expected": {
+      "audience_criteria_has": {"last_order_days_min_at_least": 30, "cities_omitted_or_empty": true}
+    }
+  }
+]

@@ -1,0 +1,67 @@
+# Render Blueprint — deploys both backend services from one push.
+# Sign in at https://render.com, click "New > Blueprint", point at this repo.
+# Render reads this file and creates the two services described below.
+#
+# Free-tier note: services spin down after 15 min of inactivity. First request
+# after sleep takes ~30s. Fine for a demo URL; for production use a paid tier.
+
+services:
+  - type: web
+    name: xeno-crm-api
+    runtime: python
+    region: singapore
+    plan: free
+    rootDir: backend/crm-api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      # SECRETS — set these in the Render dashboard after first deploy.
+      # Leaving sync=false means Render will prompt for the value rather than
+      # storing the placeholder.
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: WEBHOOK_HMAC_SECRET
+        generateValue: true        # Render generates a random secret
+      - key: LLM_PROVIDER
+        value: gemini
+      # Simulator URL — Render service URLs follow the predictable pattern
+      # https://<service-name>.onrender.com. If you renamed the simulator
+      # service, update this value in the dashboard after first deploy.
+      - key: CHANNEL_SERVICE_URL
+        value: https://xeno-channel-simulator.onrender.com
+      # CORS — Vercel preview URLs and the production URL. Update the
+      # production value after deploying the frontend.
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:3000,https://xeno-crm.vercel.app
+      # SQLite default is fine for the demo. Swap to a Postgres URL here
+      # if you want persistence across redeploys.
+      - key: DATABASE_URL
+        value: sqlite:///./crm.db
+
+  - type: web
+    name: xeno-channel-simulator
+    runtime: python
+    region: singapore
+    plan: free
+    rootDir: backend/channel-simulator
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: WEBHOOK_HMAC_SECRET
+        fromService:
+          type: web
+          name: xeno-crm-api
+          envVarKey: WEBHOOK_HMAC_SECRET
+      # Where to POST webhook callbacks. Render service URLs are predictable:
+      # https://<service-name>.onrender.com. Update if you renamed the API.
+      - key: CRM_WEBHOOK_URL
+        value: https://xeno-crm-api.onrender.com/webhooks/channel-events
+      - key: DEMO_TIMESCALE
+        value: "0.05"
