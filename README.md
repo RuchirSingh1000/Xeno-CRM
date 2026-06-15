@@ -16,16 +16,16 @@ seeded with realistic data.
 - **Walkthrough video:** *<set after recording>(https://drive.google.com/file/d/1qwruVnR3bOzj6Y81bOBMmz9HAP5M3WWu/view?usp=drive_link)*
 
 **Tech stack**
-Frontend:
-Next.js 15, React 19, TypeScript, Tailwind 4, neumorphic design system
-Backend:
-FastAPI, SQLAlchemy 2, Pydantic v2, SQLite (Postgres-ready)
-Channel simulator:
-Separate FastAPI service, async HMAC-signed webhooks
-AI:
-Gemini / OpenAI / Anthropic / Groq, provider-agnostic client with fallback chain + deterministic stub
-Auditing:
-ai_runs table + eval harness + reliability summary endpoint
+- Frontend:
+  Next.js 15, React 19, TypeScript, Tailwind 4, neumorphic design system
+- Backend:
+  FastAPI, SQLAlchemy 2, Pydantic v2, SQLite (Postgres-ready)
+- Channel simulator:
+  Separate FastAPI service, async HMAC-signed webhooks
+- AI:
+  Gemini / OpenAI / Anthropic / Groq, provider-agnostic client with fallback chain + deterministic stub
+- Auditing:
+  ai_runs table + eval harness + reliability summary endpoint
 
 ---
 
