@@ -9,7 +9,7 @@ WhatsApp / SMS / Email with consent + DND respected, tracks the async webhook
 lifecycle, and uses AI at every step where AI actually helps. Live, deployed,
 seeded with realistic data.
 
-- **Live app:** *[<set after deploy>](https://xeno-crm-flame-nu.vercel.app/)*
+- **Live app:** *(https://xeno-crm-flame-nu.vercel.app/)*
 - **Code:** *<this repo>(https://github.com/RuchirSingh1000/Xeno-CRM/)*
 - **Walkthrough video:** *<set after recording>(https://drive.google.com/file/d/1qwruVnR3bOzj6Y81bOBMmz9HAP5M3WWu/view?usp=drive_link)*
 
