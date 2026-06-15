@@ -9,9 +9,9 @@ WhatsApp / SMS / Email with consent + DND respected, tracks the async webhook
 lifecycle, and uses AI at every step where AI actually helps. Live, deployed,
 seeded with realistic data.
 
-- **Live app:** *<set after deploy>*
-- **Code:** *<this repo>*
-- **Walkthrough video:** *<set after recording>*
+- **Live app:** *[<set after deploy>](https://xeno-crm-flame-nu.vercel.app/)*
+- **Code:** *<this repo>(https://github.com/RuchidrrSingh1000/Xeno-CRM/)*
+- **Walkthrough video:** *<set after recording>(https://drive.google.com/file/d/1qwruVnR3bOzj6Y81bOBMmz9HAP5M3WWu/view?usp=drive_link)*
 
 ---
 
@@ -106,9 +106,9 @@ The take-home version makes the right *shape* of choices. None of the above is a
 
 ## AI-native dev workflow
 
-I built this with Claude Code (the CLI agent). Specifics, since the rubric asks:
+I built this with the assistance of various AI tools and agents (Claude etc.). Specifics, since the rubric asks:
 
-- **The agent wrote most of the code.** I directed and reviewed. Every PR-equivalent commit was code I read line by line, with the comments and structure being mine to accept or reshape.
+- **I've directed and reviewed everything.** Every PR-equivalent commit was code I read line by line, with the comments and structure being mine to accept or reshape.
 - **Pydantic schemas first.** Every AI surface starts with the validation schema before the prompt. That's the contract; the prompt is the implementation. If the agent drifts, the schema bites.
 - **One change per turn.** I never asked for sweeping refactors. Each turn is a small, reviewable diff. This is also how Xeno's FDE harnesses are designed to work.
 - **Run-time audit as a debugging tool.** When an AI surface misbehaved during the build, the `ai_runs` row was the first thing I looked at. The provider/model/latency/validation_status fields aren't decoration — they're a debugger.
