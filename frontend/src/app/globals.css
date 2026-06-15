@@ -385,6 +385,31 @@ textarea[class*="bg-transparent"]:focus {
 /* Reserve a bottom strip so the floating launcher never sits over content. */
 main { padding-bottom: 7rem !important; }
 
+/* Minimalist scrollbar for the sidebar nav — only shows when content
+   overflows (short viewports). Thin track, low-contrast thumb that fades in
+   on hover so it doesn't compete with the neumorphic chrome. */
+.sidebar-nav::-webkit-scrollbar { width: 6px; }
+.sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+  transition: background 200ms ease;
+}
+.sidebar-nav:hover::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--neu-text-subtle), transparent 60%);
+}
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--neu-text-subtle), transparent 30%);
+}
+/* Firefox */
+.sidebar-nav {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.sidebar-nav:hover {
+  scrollbar-color: color-mix(in srgb, var(--neu-text-subtle), transparent 60%) transparent;
+}
+
 /* Back button in the page header — small neumorphic circle */
 .page-back {
   background: var(--neu-surface);

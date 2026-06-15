@@ -96,8 +96,8 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Nav groups */}
-      <nav className="flex-1 -mx-2 px-2 space-y-4">
+      {/* Nav groups — scroll if viewport is too short so the footer stays pinned */}
+      <nav className="sidebar-nav flex-1 min-h-0 overflow-y-auto -mx-2 px-2 space-y-4">
         {GROUPS.map((g) => (
           <div key={g.label} suppressHydrationWarning>
             <div
@@ -144,8 +144,8 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
-      <div className="neu-raised-sm px-3 py-2.5 flex items-center justify-between">
+      {/* Footer — pinned at bottom, never shrinks */}
+      <div className="neu-raised-sm shrink-0 px-3 py-2.5 mt-2 flex items-center justify-between">
         <div>
           <div className="flex items-center gap-1.5 text-[10px] text-[var(--neu-text-muted)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--c-emerald)] animate-pulse-glow" />
